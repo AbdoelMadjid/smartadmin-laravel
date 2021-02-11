@@ -146,13 +146,8 @@ class Dashboard
         foreach ($extensions as &$extension) {
             $name = explode('/', $extension['name']);
             $extension['installed'] = array_key_exists(end($name), Admin::$extensions);
-            $name == 'multilanguage' ? $extension['installed'] = true : $extension['installed'] = false;
-            /*var_dump(end($name));
-            var_dump(Admin::$extensions);
-            var_dump(array_key_exists(end($name), Admin::$extensions));*/
+            $name == 'multilanguage' || $name == 'datatables' ? $extension['installed'] = true : $extension['installed'] = false;
         }
-        //dd();
-
         return view('admin::dashboard.extensions', compact('extensions'));
     }
 
