@@ -46,6 +46,7 @@ class Dashboard
      */
     public static function extensions()
     {
+        if (Admin::Themes('adminlte')) {
         $extensions = [
             'helpers' => [
                 'name' => 'smartadmin-laravel-ext/helpers',
@@ -92,12 +93,65 @@ class Dashboard
                 'link' => 'https://github.com/smartadmin-laravel-extensions/redis-manager',
                 'icon' => 'flask',
             ],
-        ];
+        ]; } else {
+            $extensions = [
+                'helpers' => [
+                    'name' => 'vreyz/helpers',
+                    'link' => 'https://github.com/vreyz/smartadmin-helpers',
+                    'icon' => 'ambulance',
+                ],
+                'log-viewer' => [
+                    'name' => 'vreyz/multilanguage',
+                    'link' => 'https://github.com/vreyz/smartadmin-language',
+                    'icon' => 'flag',
+                ],
+                'backup' => [
+                    'name' => 'vreyz/datatables',
+                    'link' => 'https://github.com/vreyz/smartadmin-datatables',
+                    'icon' => 'table',
+                ],
+                'config' => [
+                    'name' => 'smartadmin-config',
+                    'link' => 'https://github.com/vreyz/smartadmin-config',
+                    'icon' => 'toggle-on',
+                ],
+                'api-tester' => [
+                    'name' => 'smartadmin-api-tester',
+                    'link' => 'https://github.com/vreyz/smartadmin-api-tester',
+                    'icon' => 'sliders',
+                ],
+                'media-manager' => [
+                    'name' => 'smartadmin-media-manager',
+                    'link' => 'https://github.com/vreyz/smartadmin-media-manager',
+                    'icon' => 'file',
+                ],
+                'scheduling' => [
+                    'name' => 'smartadmin-scheduling',
+                    'link' => 'https://github.com/vreyz/smartadmin-scheduling',
+                    'icon' => 'clock-o',
+                ],
+                'reporter' => [
+                    'name' => 'smartadmin-reporter',
+                    'link' => 'https://github.com/vreyz/smartadmin-reporter',
+                    'icon' => 'bug',
+                ],
+                'redis-manager' => [
+                    'name' => 'smartadmin-laravel-ext/redis-manager',
+                    'link' => 'https://github.com/vreyz/smartadmin-redis-manager',
+                    'icon' => 'flask',
+                ],
+            ];
+        }
 
         foreach ($extensions as &$extension) {
             $name = explode('/', $extension['name']);
             $extension['installed'] = array_key_exists(end($name), Admin::$extensions);
+            $name == 'multilanguage' ? $extension['installed'] = true : $extension['installed'] = false;
+            /*var_dump(end($name));
+            var_dump(Admin::$extensions);
+            var_dump(array_key_exists(end($name), Admin::$extensions));*/
         }
+        //dd();
 
         return view('admin::dashboard.extensions', compact('extensions'));
     }
