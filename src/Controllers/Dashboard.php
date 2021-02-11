@@ -118,7 +118,7 @@ class Dashboard
                 'api-tester' => [
                     'name' => 'smartadmin-api-tester',
                     'link' => 'https://github.com/vreyz/smartadmin-api-tester',
-                    'icon' => 'sliders',
+                    'icon' => 'cloudversify',
                 ],
                 'media-manager' => [
                     'name' => 'smartadmin-media-manager',
@@ -128,7 +128,7 @@ class Dashboard
                 'scheduling' => [
                     'name' => 'smartadmin-scheduling',
                     'link' => 'https://github.com/vreyz/smartadmin-scheduling',
-                    'icon' => 'clock-o',
+                    'icon' => 'clock',
                 ],
                 'reporter' => [
                     'name' => 'smartadmin-reporter',
